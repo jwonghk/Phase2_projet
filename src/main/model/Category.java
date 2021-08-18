@@ -4,3 +4,4 @@ package model;
 public enum Category {
     WOODWORK, METALWORK, STITCHING, KNITTING;
 }
+

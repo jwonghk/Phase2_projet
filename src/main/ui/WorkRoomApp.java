@@ -13,16 +13,18 @@ import java.util.Scanner;
 
 // Represents the workroom application
 public class WorkRoomApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private String JSON_STORE = "./data/workroom.json";
     private Scanner input;
     private WorkRoom workRoom;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private String customername;
 
     // EFFECTS: constructs workroom and runs application
     public WorkRoomApp() throws FileNotFoundException {
-        input = new Scanner(System.in);
-        workRoom = new WorkRoom("Alex's workroom");
+        new_customer();
+        //input = new Scanner(System.in);
+        workRoom = new WorkRoom(customername);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runWorkRoom();
@@ -34,6 +36,7 @@ public class WorkRoomApp {
         boolean keepGoing = true;
         String command = null;
         input = new Scanner(System.in);
+
 
         while (keepGoing) {
             displayMenu();
@@ -49,6 +52,40 @@ public class WorkRoomApp {
 
         System.out.println("\nGoodbye!");
     }
+
+    // EFFECTS: check if it is new customer, it it is, then create a new jsondata
+    private void new_customer(){
+        System.out.println("Are you first time here?");
+        System.out.println("Press 1 for yes, and 0 for no");
+        Scanner input = new Scanner(System.in);
+        String yes_no;
+        yes_no = input.next();
+
+        System.out.println("What is your name?");
+        Scanner nameinput = new Scanner(System.in);
+        customername = input.next();
+
+        if (yes_no.equals("1")){
+            create_new_json();
+        } else {
+            load_old_json();
+        }
+
+    }
+
+    //EFFECTS: create new .json file if new user
+    public void create_new_json(){
+        System.out.println("first time");
+        JSON_STORE = "./data/" + customername + "workroom.json";
+
+    }
+
+    //EFFECTS: load old .json file
+    public void load_old_json(){
+        System.out.println("have been here");
+        JSON_STORE = "./data/" + customername + "workroom.json";
+    }
+
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {

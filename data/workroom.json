@@ -1,21 +1,10 @@
-{
-    "thingies": [
-        {
-            "name": "needle",
-            "category": "STITCHING"
-        },
-        {
-            "name": "thread",
-            "category": "STITCHING"
-        },
-        {
-            "name": "wool",
-            "category": "KNITTING"
-        },
-        {
-            "name": "saw",
-            "category": "WOODWORK"
-        }
-    ],
-    "name": "Alex's workroom"
-}
+{"thingies": [
+    {
+        "name": "okay",
+        "category": "STITCHING"
+    },
+    {
+        "name": "oba",
+        "category": "METALWORK"
+    }
+]}
